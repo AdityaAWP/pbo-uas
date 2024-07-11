@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.EditDataPerjalananController">
+    <children>
+        <VBox spacing="10" layoutX="14.0" layoutY="14.0">
+            <HBox spacing="10">
+                <Label text="Asal:" />
+                <TextField fx:id="originField" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Tujuan:" />
+                <TextField fx:id="destinationField" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Jadwal:" />
+                <TextField fx:id="scheduleField" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Harga:" />
+                <TextField fx:id="priceField" />
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Jumlah Tiket:" />
+                <TextField fx:id="jumlahTiketField" />
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Simpan" onAction="#handleSave" />
+                <Button text="Batal" onAction="#handleCancel" />
+            </HBox>
+        </VBox>
+    </children>
+</AnchorPane>

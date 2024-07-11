@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.DataPerjalananController">
+    <children>
+         <HBox spacing="10" alignment="center">
+            <Label text="Origin:" />
+            <TextField fx:id="originField" promptText="Asal" />
+            <Label text="Destination:" />
+            <TextField fx:id="destinationField" promptText="Tujuan" />
+            <Label text="Schedule:" />
+            <TextField fx:id="scheduleField" promptText="Jadwal" />
+            <Label text="Price:" />
+            <TextField fx:id="priceField" promptText="Harga" />
+            <Label text="Tickets:" />
+            <TextField fx:id="jumlahTiketField" promptText="Jumlah Tiket" />
+            <Button text="Tambah" onAction="#addTravel" styleClass="action-button"/>
+            <Button text="Edit" onAction="#editTravel" styleClass="action-button"/>
+            <Button text="Hapus" onAction="#deleteTravel" styleClass="action-button"/>
+        </HBox>
+        <Separator />
+       <HBox spacing="10" alignment="center">
+            <Label text="Search Origin:" />
+            <TextField fx:id="searchOriginField" promptText="Masukkan Asal" />
+            <Label text="Search Destination:" />
+            <TextField fx:id="searchDestinationField" promptText="Masukkan Tujuan" />
+            <Button text="Cari" onAction="#searchTravel" styleClass="action-button"/>
+        </HBox>
+         <Separator />
+        <TableView fx:id="travelTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" />
+                <TableColumn fx:id="originColumn" text="Asal" />
+                <TableColumn fx:id="destinationColumn" text="Tujuan" />
+                <TableColumn fx:id="scheduleColumn" text="Jadwal" />
+                <TableColumn fx:id="priceColumn" text="Harga" />
+                <TableColumn fx:id="jumlahTiketColumn" text="Jumlah Tiket" />
+            </columns>
+        </TableView>
+    </children>
+</VBox>

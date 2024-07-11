@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.TicketManagementController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <TableView fx:id="travelTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="originColumn" text="Asal" prefWidth="150"/>
+            <TableColumn fx:id="destinationColumn" text="Tujuan" prefWidth="150"/>
+            <TableColumn fx:id="scheduleColumn" text="Jadwal" prefWidth="150"/>
+            <TableColumn fx:id="priceColumn" text="Harga" prefWidth="100"/>
+            <TableColumn fx:id="jumlahTiketColumn" text="Sisa Tiket" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>

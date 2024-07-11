@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.BookingController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <children>
+        <HBox spacing="10" alignment="center">
+            <Label text="Masukkan Nama Customer:" />
+            <TextField fx:id="customerNameField" promptText="Masukkan Nama Customer:" />
+        </HBox>
+        <HBox spacing="10" alignment="center">
+            <Label text="Masukkan Rute:" />
+            <ChoiceBox fx:id="travelChoiceBox" />
+        </HBox>
+        <HBox spacing="10" alignment="center">
+            <Label text="Masukkan Jumlah Tiket:" />
+            <TextField fx:id="ticketCountField" promptText="Masukkan Jumlah Tiket" />
+        </HBox>
+        <Button text="Pesan" onAction="#addBooking" styleClass="action-button"/>
+        <Button text="Print Tiket" onAction="#printTicket" styleClass="action-button"/>
+        <TableView fx:id="bookingTable" prefHeight="400">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="customerNameColumn" text="Nama Customer" prefWidth="150"/>
+                <TableColumn fx:id="travelOriginColumn" text="Destinasi Asal" prefWidth="150"/>
+                <TableColumn fx:id="travelDestinationColumn" text="Destinasi Tujuan" prefWidth="150"/>
+                <TableColumn fx:id="travelScheduleColumn" text="Jadwal" prefWidth="150"/>
+                <TableColumn fx:id="ticketCountColumn" text="Jumlah Tiket" prefWidth="100"/>
+                <TableColumn fx:id="totalCostColumn" text="Total Harga" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </children>
+</VBox>

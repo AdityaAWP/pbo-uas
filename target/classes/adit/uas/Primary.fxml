@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #de6656;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.PrimaryController">
+   <children>
+      <Label layoutX="254.0" layoutY="49.0" text="Street-Light">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="68.0" text="Your Worthy Travel Buddy">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <HBox layoutX="70.0" layoutY="187.0" prefHeight="26.0" prefWidth="482.0" alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="26.0" prefWidth="350.0">
+               <menus>
+                  <Menu mnemonicParsing="false" text="Data Perjalanan">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleDataPerjalanan" text=" Data Perjalanan" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Pemesanan Tiket">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleBooking" text="Pemesanan Tiket"/>
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Manajemen Tiket">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleTicketManagement" text="Manajemen Tiket"/>
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+      <Label layoutX="34.0" layoutY="359.0" text="By : Aditya Wulan Pratama">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
