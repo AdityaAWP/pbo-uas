@@ -90,6 +90,7 @@ public class DataPerjalananController {
         if (selectedTravel != null) {
             boolean saveClicked = showEditTravelDialog(selectedTravel);
             if (saveClicked) {
+                travelDAO.updateTravel(selectedTravel); // Update database with new travel data
                 updateTravelData(selectedTravel);
             }
         } else {
