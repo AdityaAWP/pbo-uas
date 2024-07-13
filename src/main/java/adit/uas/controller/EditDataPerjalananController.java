@@ -15,7 +15,7 @@ public class EditDataPerjalananController {
     @FXML
     private TextField priceField;
     @FXML
-    private TextField jumlahTiketField; // New field
+    private TextField jumlahTiketField;
 
     private Stage dialogStage;
     private Travel travel;
@@ -35,7 +35,7 @@ public class EditDataPerjalananController {
         destinationField.setText(travel.getDestination());
         scheduleField.setText(travel.getSchedule());
         priceField.setText(Double.toString(travel.getPrice()));
-        jumlahTiketField.setText(Integer.toString(travel.getJumlahTiket())); // Set jumlahTiket
+        jumlahTiketField.setText(Integer.toString(travel.getJumlahTiket())); // Initialize jumlahTiket
     }
 
     public boolean isSaveClicked() {

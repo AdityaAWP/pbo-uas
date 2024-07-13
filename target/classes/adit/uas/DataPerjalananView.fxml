@@ -1,43 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.DataPerjalananController">
-    <children>
-         <HBox spacing="10" alignment="center">
-            <Label text="Origin:" />
-            <TextField fx:id="originField" promptText="Asal" />
-            <Label text="Destination:" />
-            <TextField fx:id="destinationField" promptText="Tujuan" />
-            <Label text="Schedule:" />
-            <TextField fx:id="scheduleField" promptText="Jadwal" />
-            <Label text="Price:" />
-            <TextField fx:id="priceField" promptText="Harga" />
-            <Label text="Tickets:" />
-            <TextField fx:id="jumlahTiketField" promptText="Jumlah Tiket" />
-            <Button text="Tambah" onAction="#addTravel" styleClass="action-button"/>
-            <Button text="Edit" onAction="#editTravel" styleClass="action-button"/>
-            <Button text="Hapus" onAction="#deleteTravel" styleClass="action-button"/>
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.DataPerjalananController" spacing="15">
+    <padding>
+        <Insets top="1" right="20" bottom="1" left="20"/>
+    </padding>
+    <Label text="Manajemen Data Perjalanan" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Separator/>
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+        <Label text="Asal:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="originField" promptText="Masukkan Asal" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Tujuan:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="destinationField" promptText="Masukkan Tujuan" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Jadwal:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="scheduleField" promptText="Masukkan Jadwal" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <Label text="Harga:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="priceField" promptText="Masukkan Harga" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        <Label text="Jumlah Tiket:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextField fx:id="jumlahTiketField" promptText="Masukkan Jumlah Tiket" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+        <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.rowIndex="5" GridPane.columnIndex="1">
+            <Button text="Tambah" onAction="#addTravel" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Button text="Edit" onAction="#editTravel" style="-fx-background-color: #FFC107; -fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Button text="Hapus" onAction="#deleteTravel" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;"/>
         </HBox>
-        <Separator />
-       <HBox spacing="10" alignment="center">
-            <Label text="Search Origin:" />
-            <TextField fx:id="searchOriginField" promptText="Masukkan Asal" />
-            <Label text="Search Destination:" />
-            <TextField fx:id="searchDestinationField" promptText="Masukkan Tujuan" />
-            <Button text="Cari" onAction="#searchTravel" styleClass="action-button"/>
-        </HBox>
-         <Separator />
-        <TableView fx:id="travelTable">
-            <columns>
-                <TableColumn fx:id="idColumn" text="ID" />
-                <TableColumn fx:id="originColumn" text="Asal" />
-                <TableColumn fx:id="destinationColumn" text="Tujuan" />
-                <TableColumn fx:id="scheduleColumn" text="Jadwal" />
-                <TableColumn fx:id="priceColumn" text="Harga" />
-                <TableColumn fx:id="jumlahTiketColumn" text="Jumlah Tiket" />
-            </columns>
-        </TableView>
-    </children>
+    </GridPane>
+    <Separator/>
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+        <Label text="Cari Asal:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="searchOriginField" promptText="Cari Asal" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Cari Tujuan:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="searchDestinationField" promptText="Cari Tujuan" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Button text="Cari" onAction="#searchTravel" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+    </GridPane>
+    <Separator/>
+    <TableView fx:id="travelTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="originColumn" text="Asal" prefWidth="150"/>
+            <TableColumn fx:id="destinationColumn" text="Tujuan" prefWidth="150"/>
+            <TableColumn fx:id="scheduleColumn" text="Jadwal" prefWidth="150"/>
+            <TableColumn fx:id="priceColumn" text="Harga" prefWidth="100"/>
+            <TableColumn fx:id="jumlahTiketColumn" text="Jumlah Tiket" prefWidth="100"/>
+        </columns>
+    </TableView>
 </VBox>

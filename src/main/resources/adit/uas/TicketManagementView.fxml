@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.TicketManagementController" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.TicketManagementController" spacing="15">
     <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
+        <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
+    <Label text="Manajemen Tiket" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <Separator />
     <TableView fx:id="travelTable" prefHeight="400">
         <columns>
             <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
@@ -16,7 +17,19 @@
             <TableColumn fx:id="destinationColumn" text="Tujuan" prefWidth="150"/>
             <TableColumn fx:id="scheduleColumn" text="Jadwal" prefWidth="150"/>
             <TableColumn fx:id="priceColumn" text="Harga" prefWidth="100"/>
-            <TableColumn fx:id="jumlahTiketColumn" text="Sisa Tiket" prefWidth="100"/>
+            <TableColumn fx:id="jumlahTiketColumn" text="Jumlah Tiket" prefWidth="100"/>
         </columns>
     </TableView>
+    <Separator />
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+        <Label text="Jumlah Tiket:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="jumlahTiketField" promptText="Masukkan Jumlah Tiket" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Button text="Update" onAction="#updateJumlahTiket" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;"/>
+        </HBox>
+    </GridPane>
 </VBox>

@@ -10,7 +10,7 @@ public class Travel {
     private final SimpleStringProperty destination;
     private final SimpleStringProperty schedule;
     private final SimpleDoubleProperty price;
-    private final SimpleIntegerProperty jumlahTiket; // New field
+    private final SimpleIntegerProperty jumlahTiket;
 
     public Travel(int id, String origin, String destination, String schedule, double price, int jumlahTiket) {
         this.id = new SimpleIntegerProperty(id);
@@ -18,7 +18,7 @@ public class Travel {
         this.destination = new SimpleStringProperty(destination);
         this.schedule = new SimpleStringProperty(schedule);
         this.price = new SimpleDoubleProperty(price);
-        this.jumlahTiket = new SimpleIntegerProperty(jumlahTiket); // Initialize new field
+        this.jumlahTiket = new SimpleIntegerProperty(jumlahTiket);
     }
 
     public int getId() {

@@ -1,38 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.BookingController" spacing="10">
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.BookingController" spacing="15">
     <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
+        <Insets top="20" right="20" bottom="20" left="20"/>
     </padding>
-    <children>
-        <HBox spacing="10" alignment="center">
-            <Label text="Masukkan Nama Customer:" />
-            <TextField fx:id="customerNameField" promptText="Masukkan Nama Customer:" />
+    <Label text="Pemesanan Tiket" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Separator/>
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="30"/>
+            <ColumnConstraints percentWidth="70"/>
+        </columnConstraints>
+        <Label text="Nama Customer:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="customerNameField" promptText="Masukkan Nama Customer:" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Rute:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ChoiceBox fx:id="travelChoiceBox" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Jumlah Tiket:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="ticketCountField" promptText="Masukkan Jumlah Tiket" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <Button text="Pesan" onAction="#addBooking" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;"/>
+            <Button text="Batal" onAction="#cancelBooking" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;"/>
         </HBox>
-        <HBox spacing="10" alignment="center">
-            <Label text="Masukkan Rute:" />
-            <ChoiceBox fx:id="travelChoiceBox" />
-        </HBox>
-        <HBox spacing="10" alignment="center">
-            <Label text="Masukkan Jumlah Tiket:" />
-            <TextField fx:id="ticketCountField" promptText="Masukkan Jumlah Tiket" />
-        </HBox>
-        <Button text="Pesan" onAction="#addBooking" styleClass="action-button"/>
-        <Button text="Print Tiket" onAction="#printTicket" styleClass="action-button"/>
-        <TableView fx:id="bookingTable" prefHeight="400">
-            <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="customerNameColumn" text="Nama Customer" prefWidth="150"/>
-                <TableColumn fx:id="travelOriginColumn" text="Destinasi Asal" prefWidth="150"/>
-                <TableColumn fx:id="travelDestinationColumn" text="Destinasi Tujuan" prefWidth="150"/>
-                <TableColumn fx:id="travelScheduleColumn" text="Jadwal" prefWidth="150"/>
-                <TableColumn fx:id="ticketCountColumn" text="Jumlah Tiket" prefWidth="100"/>
-                <TableColumn fx:id="totalCostColumn" text="Total Harga" prefWidth="100"/>
-            </columns>
-        </TableView>
-    </children>
+    </GridPane>
+    <Separator/>
+    <Button text="Print Tiket" onAction="#printTicket" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px;"/>
+    <TableView fx:id="bookingTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="customerNameColumn" text="Nama Customer" prefWidth="150"/>
+            <TableColumn fx:id="travelOriginColumn" text="Destinasi Asal" prefWidth="150"/>
+            <TableColumn fx:id="travelDestinationColumn" text="Destinasi Tujuan" prefWidth="150"/>
+            <TableColumn fx:id="travelScheduleColumn" text="Jadwal" prefWidth="150"/>
+            <TableColumn fx:id="ticketCountColumn" text="Jumlah Tiket" prefWidth="100"/>
+            <TableColumn fx:id="totalCostColumn" text="Total Harga" prefWidth="100"/>
+        </columns>
+    </TableView>
 </VBox>

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.List;
@@ -29,13 +30,15 @@ public class TicketManagementController {
     @FXML
     private TableColumn<Travel, Integer> jumlahTiketColumn;
 
+    @FXML
+    private TextField jumlahTiketField; // New field for updating jumlahTiket
+
     private TravelDAO travelDAO;
     private ObservableList<Travel> travelData = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
         travelDAO = new TravelDAO();
-
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         originColumn.setCellValueFactory(new PropertyValueFactory<>("origin"));
         destinationColumn.setCellValueFactory(new PropertyValueFactory<>("destination"));
@@ -45,6 +48,9 @@ public class TicketManagementController {
 
         loadTravelData();
         checkLowTickets();
+
+        travelTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showTravelDetails(newValue));
     }
 
     private void loadTravelData() {
@@ -53,10 +59,30 @@ public class TicketManagementController {
         travelTable.setItems(travelData);
     }
 
+    private void showTravelDetails(Travel travel) {
+        if (travel != null) {
+            jumlahTiketField.setText(Integer.toString(travel.getJumlahTiket()));
+        } else {
+            jumlahTiketField.setText("");
+        }
+    }
+
+    @FXML
+    private void updateJumlahTiket() {
+        Travel selectedTravel = travelTable.getSelectionModel().getSelectedItem();
+        if (selectedTravel != null) {
+            int newJumlahTiket = Integer.parseInt(jumlahTiketField.getText());
+            travelDAO.updateJumlahTiket(selectedTravel.getId(), newJumlahTiket);
+            loadTravelData();
+        } else {
+            showAlert("No Travel Selected", "Please select a travel in the table.");
+        }
+    }
+
     private void checkLowTickets() {
-        List<Travel> lowTicketTravels = travelDAO.getTravelsWithLowTickets(3);
+        List<Travel> lowTicketTravels = travelDAO.getTravelsWithLowTickets(4);
         if (!lowTicketTravels.isEmpty()) {
-            StringBuilder message = new StringBuilder("The following routes have less than 3 tickets left:\n");
+            StringBuilder message = new StringBuilder("The following routes have less than 4 tickets left:\n");
             for (Travel travel : lowTicketTravels) {
                 message.append(travel.getOrigin()).append(" to ").append(travel.getDestination())
                         .append(" at ").append(travel.getSchedule()).append(" - ")

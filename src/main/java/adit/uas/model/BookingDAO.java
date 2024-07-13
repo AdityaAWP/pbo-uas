@@ -30,6 +30,22 @@ public class BookingDAO {
         }
     }
 
+    public void cancelBooking(Booking booking) {
+        String sql = "DELETE FROM bookings WHERE id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, booking.getId());
+            pstmt.executeUpdate();
+
+            // Add back the number of available tickets
+            TravelDAO travelDAO = new TravelDAO();
+            Travel travel = travelDAO.getTravelById(booking.getTravelId());
+            int newJumlahTiket = travel.getJumlahTiket() + booking.getTicketCount();
+            travelDAO.updateJumlahTiket(booking.getTravelId(), newJumlahTiket);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<Booking> getAllBookings() {
         List<Booking> bookings = new ArrayList<>();
         String sql = "SELECT b.id, b.customerName, b.travelId, t.origin, t.destination, t.schedule, b.ticketCount, b.totalCost "

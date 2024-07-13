@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="adit.uas.controller.EditDataPerjalananController">
     <children>
-        <VBox spacing="10" layoutX="14.0" layoutY="14.0">
-            <HBox spacing="10">
-                <Label text="Asal:" />
-                <TextField fx:id="originField" />
-            </HBox>
-            <HBox spacing="10">
-                <Label text="Tujuan:" />
-                <TextField fx:id="destinationField" />
-            </HBox>
-            <HBox spacing="10">
-                <Label text="Jadwal:" />
-                <TextField fx:id="scheduleField" />
-            </HBox>
-            <HBox spacing="10">
-                <Label text="Harga:" />
-                <TextField fx:id="priceField" />
-            </HBox>
-            <HBox spacing="10">
-                <Label text="Jumlah Tiket:" />
-                <TextField fx:id="jumlahTiketField" />
-            </HBox>
-            <HBox spacing="10">
-                <Button text="Simpan" onAction="#handleSave" />
-                <Button text="Batal" onAction="#handleCancel" />
-            </HBox>
+        <VBox spacing="15" layoutX="20" layoutY="20">
+            <Label text="Edit Data Perjalanan" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Separator />
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="30"/>
+                    <ColumnConstraints percentWidth="70"/>
+                </columnConstraints>
+                <Label text="Asal:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="originField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                <Label text="Tujuan:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="destinationField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                <Label text="Jadwal:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="scheduleField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                <Label text="Harga:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="priceField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                <Label text="Jumlah Tiket:" style="-fx-font-size: 14px; -fx-font-weight: bold;" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="jumlahTiketField" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                <HBox spacing="10" alignment="CENTER_RIGHT" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                    <Button text="Simpan" onAction="#handleSave" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px;"/>
+                    <Button text="Batal" onAction="#handleCancel" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px;"/>
+                </HBox>
+            </GridPane>
         </VBox>
     </children>
 </AnchorPane>

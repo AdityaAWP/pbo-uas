@@ -1,6 +1,5 @@
 package adit.uas.controller;
 
-import adit.uas.model.Database;
 import adit.uas.model.Travel;
 import adit.uas.model.TravelDAO;
 import javafx.collections.FXCollections;
@@ -8,7 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -42,7 +44,6 @@ public class DataPerjalananController {
 
     public void initialize() {
         travelDAO = new TravelDAO();
-        Database.createTable();
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         originColumn.setCellValueFactory(new PropertyValueFactory<>("origin"));
         destinationColumn.setCellValueFactory(new PropertyValueFactory<>("destination"));
@@ -90,15 +91,11 @@ public class DataPerjalananController {
         if (selectedTravel != null) {
             boolean saveClicked = showEditTravelDialog(selectedTravel);
             if (saveClicked) {
-                travelDAO.updateTravel(selectedTravel); // Update database with new travel data
-                updateTravelData(selectedTravel);
+                travelDAO.updateTravel(selectedTravel);
+                loadTravelData();
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Travel Selected");
-            alert.setContentText("Please select a travel in the table.");
-            alert.showAndWait();
+            showAlert("No Selection", "No Travel Selected", "Please select a travel in the table.");
         }
     }
 
@@ -134,11 +131,7 @@ public class DataPerjalananController {
             travelDAO.deleteTravel(selectedTravel.getId());
             loadTravelData();
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Travel Selected");
-            alert.setContentText("Please select a travel in the table.");
-            alert.showAndWait();
+            showAlert("No Selection", "No Travel Selected", "Please select a travel in the table.");
         }
     }
 
@@ -157,7 +150,11 @@ public class DataPerjalananController {
         travelTable.setItems(travelData);
     }
 
-    private void updateTravelData(Travel travel) {
-        travelTable.refresh();
+    private void showAlert(String title, String header, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }

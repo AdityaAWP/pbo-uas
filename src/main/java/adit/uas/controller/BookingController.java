@@ -107,17 +107,23 @@ public class BookingController {
             return;
         }
 
-        if (ticketCount > selectedTravel.getJumlahTiket()) {
-            showAlert("Insufficient Tickets", "Not enough tickets available.");
-            return;
-        }
-
         double totalCost = ticketCount * selectedTravel.getPrice();
 
         Booking booking = new Booking(0, customerName, selectedTravel.getId(), selectedTravel.getOrigin(),
                 selectedTravel.getDestination(), selectedTravel.getSchedule(), ticketCount, totalCost);
         bookingDAO.addBooking(booking);
         loadBookingData();
+    }
+
+    @FXML
+    private void cancelBooking() {
+        Booking selectedBooking = bookingTable.getSelectionModel().getSelectedItem();
+        if (selectedBooking != null) {
+            bookingDAO.cancelBooking(selectedBooking);
+            loadBookingData();
+        } else {
+            showAlert("No Booking Selected", "Please select a booking to cancel.");
+        }
     }
 
     @FXML

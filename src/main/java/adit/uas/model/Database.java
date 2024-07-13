@@ -26,7 +26,7 @@ public class Database {
                 "destination TEXT NOT NULL," +
                 "schedule TEXT NOT NULL," +
                 "price REAL NOT NULL," +
-                "jumlahTiket INTEGER NOT NULL);"; // New field
+                "jumlahTiket INTEGER NOT NULL);";
 
         String createBookings = "CREATE TABLE IF NOT EXISTS bookings (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
